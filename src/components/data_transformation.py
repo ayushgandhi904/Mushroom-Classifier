@@ -5,10 +5,10 @@ from src.logger import logging
 from src.exception import CustomException
 from dataclasses import dataclass
 from src.utils import save_object
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OrdinalEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
-from sklearn.compose import ColumnTransformer, make_column_transformer
+from sklearn.compose import ColumnTransformer
 
 @dataclass
 class DataTransformationConfig:
@@ -34,7 +34,7 @@ class DataTransformation:
             
             target_pipeline = Pipeline(
                 steps = [
-                    ("labelencoder", LabelEncoder()),
+                    ("ordinalencoder", OrdinalEncoder()),
                     ("PCA", PCA(n_components=10))
                 ]
             )
@@ -93,12 +93,12 @@ class DataTransformation:
                 obj = preprocessing_obj
             )
             logging.info("File saved in Pickle file")
+            
             return (
                 train_arr,
                 test_arr,
                 self.get_data_transformation_config.preprocessor_obj_file_path
             )        
-            
             
         except Exception as e:
             logging.info("Error occur in datatransformation intialization")
