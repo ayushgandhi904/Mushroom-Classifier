@@ -17,9 +17,9 @@ class DataTransformationConfig:
 class DataTransformation:
     
     def __init__(self):
-        self.get_data_transformation_config = DataTransformationConfig()
+        self.data_transformation_config = DataTransformationConfig()
         
-    def get_data_tranformation_object(self):
+    def get_data_transformation_object(self):
         try:
             logging.info("Data Transformation step started")
             
@@ -30,11 +30,40 @@ class DataTransformation:
                         'stalk-color-below-ring', 'veil-type', 'veil-color', 'ring-number',
                         'ring-type', 'spore-print-color', 'population', 'habitat']
             
+            #Ranking for ordinal variable
+            
+            cap_shape = ['b','c','x','f','k','s']
+            cap_surface = ['f','g','y','s']
+            cap_color = ['n','b','c','g','r','p','u','e','w','y']
+            bruises = ['t','f']
+            odor = ['a','l','c','y','f','m','n','p','s']
+            gill_attachment = ['a','f']
+            gill_spacing = ['c','w']
+            gill_size = ['b','n']
+            gill_color = ['k','n','b','h','g','r','o','p','u','e','w','y']
+            stalk_shape = ['e','t']
+            stalk_root = ['b','c','e','r','?']
+            stalk_surface_above_ring = ['f','y','k','s']
+            stalk_surface_below_ring = ['f','y','k','s']
+            stalk_color_above_ring = ['n','b','c','g','o','p','e','w','y']
+            stalk_color_below_ring = ['n','b','c','g','o','p','e','w','y']
+            veil_type = ['p']
+            veil_color = ['w','n','o','y']
+            ring_number = ['n','o','t']
+            ring_type = ['e','f','l','n','p']
+            spore_print_color = ['k','n','b','h','r','o','u','w','y']
+            population = ['a','c','n','s','v','y']
+            habitat = ['g','l','m','p','u','w','d']
+            
             logging.info("Pipeline initiated")
             
             target_pipeline = Pipeline(
                 steps = [
-                    ("ordinalencoder", OrdinalEncoder()),
+                    ("ordinalencoder", OrdinalEncoder(categories=[cap_shape, cap_surface, cap_color, bruises, odor, gill_attachment, gill_spacing, 
+                                                                  gill_size, gill_color, stalk_shape, stalk_root, stalk_surface_above_ring,
+                                                                  stalk_surface_below_ring, stalk_color_above_ring, stalk_color_below_ring, veil_type,
+                                                                  veil_color,ring_number, ring_type, spore_print_color, population, habitat])),
+                                                                  
                     ("PCA", PCA(n_components=10))
                 ]
             )
@@ -42,7 +71,7 @@ class DataTransformation:
             logging.info("Processor step started")
             
             preprocessor = ColumnTransformer([
-                "lab_pipeline", target_pipeline, lab_cols
+                ("lab_pipeline", target_pipeline, lab_cols)
             ])
             logging.info("Pipeline completed")
             
@@ -66,7 +95,7 @@ class DataTransformation:
             
             logging.info("Ready for preprocessing object")
             
-            preprocessing_obj = self.get_data_tranformation_object()
+            preprocessing_obj = self.get_data_transformation_object()
             
             target_column = "class"
             drop_columns = [target_column]
@@ -89,7 +118,7 @@ class DataTransformation:
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
             
             save_object(
-                file_path = self.data_transformation_config.preprocessor_obj_file_path,
+                file_path=self.data_transformation_config.preprocessor_obj_file_path,
                 obj = preprocessing_obj
             )
             logging.info("File saved in Pickle file")
@@ -97,7 +126,7 @@ class DataTransformation:
             return (
                 train_arr,
                 test_arr,
-                self.get_data_transformation_config.preprocessor_obj_file_path
+                self.data_transformation_config.preprocessor_obj_file_path
             )        
             
         except Exception as e:

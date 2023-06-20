@@ -5,4 +5,4 @@ seaborn
 scikit-learn
 flask
 ipykernel
--e .
+#-e .
