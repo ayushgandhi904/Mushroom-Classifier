@@ -24,7 +24,7 @@ class DataIngestion:
         
         try:
             df = pd.read_csv(os.path.join("notebooks/data", "mushrooms.csv"))
-            df["class"] = df["class"].apply(lambda x: 1 if "p" else 0)
+            df["class"] = df["class"].apply(lambda x: {"p" : 1, "e": 0}[x])
             logging.info("Dataset readed by pandas")
             
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok= True)
