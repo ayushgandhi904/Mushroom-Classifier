@@ -27,7 +27,7 @@ def predict_datapoint():
             gill_attachment = request.form.get("gill_attachment"),
             gill_spacing = request.form.get("gill_spacing"),
             gill_size = request.form.get("gill_size"),
-            stalk_color = request.form.get("stalk_color"),
+            gill_color = request.form.get("gill_color"),
             stalk_shape = request.form.get("stalk_shape"),
             stalk_root = request.form.get("stalk_root"),
             stalk_color_above_ring = request.form.get("stalk_color_above_ring"),
@@ -49,10 +49,13 @@ def predict_datapoint():
         
         if pred == 0:
             results = "Edible"
+            return render_template("edible.html", final_result = results)
+        elif pred == 1:
+            results = "Poisonous"
+            return render_template("poisonous.html", final_result = results)
         else:
-            reults = "Poisonous"
-            
-        return render_template("results.html", final_result = results)
+            result = "Data not found"
+            return render_template("results.html", final_result = results)
 
 if __name__=="__main__":
     app.run(host='0.0.0.0',debug=True, port=5000)
