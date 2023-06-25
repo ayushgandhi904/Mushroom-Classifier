@@ -1,81 +1,95 @@
 <!DOCTYPE html>
 <html>
-  <head> </head>
+  <head>
+    <title>Welcome Page</title>
+  </head>
   <style>
-    img {
-      margin-left: 225px;
-      margin-top: 50px;
+    em {
+      font-size: 50px;
+      position: absolute;
+      left: 360px;
+      font-family: "arial";
     }
     body {
       background-color: black;
+      color: white;
     }
-    .textBox {
-      border: 5px solid black;
-      padding: 5px;
-      background-color: white;
+    footer {
+      position: absolute;
+      font-weight: bold;
+      bottom: -5px;
+      right: 10px;
     }
-    .box1 {
-      border: 5px dashed black;
-      background-color: white;
-      display: inline;
-      margin-left: 320px;
+    #edible {
+      border-radius: 10%;
+      position: absolute;
+      left: 200px;
+      top: 200px;
+      width: 250px;
+      height: 188px;
     }
-    .box2 {
-      border: 5px dashed black;
-      background-color: white;
-      display: inline;
-      margin-left: 300px;
-    }
-    .box3 {
-      position: absolute; /* Set the positioning context */
-      top: 70%; /* Adjust the top position */
-      left: 50%; /* Adjust the left position */
-      transform: translate(-50%, -50%); /* Center the text */
-      background-color: #f2f2f2;
-      padding: 5px;
-      border: 5px solid black;
-    }
-    .o {
-      position: absolute; /* Set the positioning context */
-      top: 30%; /* Adjust the top position */
-      left: 48%; /* Adjust the left position */
-      transform: translate(-50%, -50%);
-      color: purple;
-      font-size: 60px;
-      font-family: sans-serif;
-    }
-    .r {
-      position: absolute; /* Set the positioning context */
-      top: 30%; /* Adjust the top position */
-      left: 52%; /* Adjust the left position */
-      transform: translate(-50%, -50%);
+    #ed {
+      position: absolute;
+      left: 290px;
+      top: 380px;
       color: yellow;
-      font-size: 60px;
+      font-size: 30px;
+    }
+    #poison {
+      border-radius: 10%;
+      position: absolute;
+      left: 950px;
+      top: 200px;
+      width: 250px;
+      height: 188px;
+    }
+    #pi {
+      position: absolute;
+      left: 1020px;
+      top: 380px;
+      color: rgb(255, 2, 255);
+      font-size: 30px;
+    }
+    #or {
+      position: absolute;
+      left: 670px;
+      top: 240px;
+      font-size: 50px;
+      background-image: linear-gradient(to right, yellow, purple);
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+      color: transparent;
       font-family: sans-serif;
     }
-    .poison {
-      margin-left: 225px;
-      margin-top: 45px;
+    #predict {
+      border: 8px solid cyan;
+      position: absolute;
+      padding: 15px;
+      left: 645px;
+      top: 550px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 25px;
+      font-family: sans-serif;
+      color: chartreuse;
+    }
+    #predict:hover {
+      color: red;
+      background-color: white;
+      text-decoration: solid;
+      font-size: 25px;
+      cursor: grab;
     }
   </style>
   <body>
-    <h1 style="text-align: center" class="textBox">Test Your Mushroom</h1>
-    <div
-      style="background-color: yellow; width: 50%; height: 550px; float: left"
-    >
-      <img src="edible.jpg" />
-
-      <h2 class="box1">Edible</h2>
-      <p><span class="o">O</span> <span class="r">R</span></p>
-      <h2 class="box3"><a href="predict">Predict by yourself</a></h2>
-    </div>
-
-    <div
-      style="background-color: purple; width: 50%; height: 550px; float: left"
-    >
-      <img src= "poison.jpg" class="poison" />
-      <br />
-      <h2 class="box2">Poisonous</h2>
-    </div>
+    <h1><em>Welcome To The Mushroom Test</em></h1>
+    <img src="edible.jpg" alt="Edeible Mushroom Image"/ id="edible">
+    <h2 id="ed">Edible</h2>
+    <img src="poison.jpg" alt="Poisonous Mushroom Image" / id="poison" >
+    <h2 id="pi">Poisonous</h2>
+    <h1 id="or">OR</h1>
+    <a href="predict" id="predict">CHECK</a>
   </body>
+  <footer>Created By Ayush Gandhi</footer>
 </html>

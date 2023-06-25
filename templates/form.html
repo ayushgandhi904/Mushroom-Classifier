@@ -1,258 +1,630 @@
 <html>
-<body>
-<form action="{{url_for('predict_datapoint')}}" method="POST">
+  <style>
+    h1 {
+      color: blue;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    body {
+      background-color: black;
+      color: white;
+    }
+    label {
+      border: 2px solid blue;
+      color: aqua;
+      font-size: 30px;
+      font-family: sans-serif;
+    }
+    #cs {
+      box-shadow: 8px 0 16px 0 cyan;
+      position: absolute;
+      top: 90px;
+    }
+    #cap_shape {
+      position: absolute;
+      top: 126px;
+      font-size: 25px;
+      background-color: rgb(0, 255, 221);
+      width: 160px;
+    }
+    option[value="b"] {
+      background-color: rgb(30, 120, 210);
+    }
+    option[value="c"] {
+      background-color: rgb(30, 168, 210);
+    }
+    option[value="x"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="f"] {
+      background-color: rgb(30, 210, 201);
+    }
+    option[value="k"] {
+      background-color: rgb(52, 248, 255);
+    }
+    option[value="s"] {
+      background-color: rgb(30, 210, 150);
+    }
+    #csu {
+      position: absolute;
+      top: 90px;
+      left: 250px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #cap_surface {
+      position: absolute;
+      top: 126px;
+      left: 250px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 178px;
+    }
+    option[value="b"] {
+      background-color: rgb(30, 120, 210);
+    }
+    option[value="g"] {
+      background-color: rgb(30, 168, 210);
+    }
+    option[value="y"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="b"] {
+      background-color: rgb(52, 248, 255);
+    }
+    #cc {
+      position: absolute;
+      top: 90px;
+      left: 520px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #cap_color {
+      position: absolute;
+      top: 126px;
+      left: 520px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 140px;
+    }
+    #br {
+      position: absolute;
+      top: 90px;
+      left: 760px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #bruises {
+      position: absolute;
+      top: 126px;
+      left: 760px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 110px;
+    }
+    #od {
+      position: absolute;
+      top: 90px;
+      left: 960px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #odor {
+      position: absolute;
+      top: 126px;
+      left: 960px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 80px;
+    }
 
-<div class="form-group">
-    <label for="cap_shape">Cap Shape:</label>
-    <select id="cap_shape" name="cap_shape">
-        <option value="b">bell</option>
-        <option value="c">conical</option>
-        <option value="x">convex</option>
-        <option value="f">flat</option>
-        <option value="k">knobbed</option>
-        <option value="s">sunken</option>
-    </select>
-</div>
+    #ga {
+      position: absolute;
+      top: 90px;
+      left: 1130px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #gill_attachment {
+      position: absolute;
+      left: 1130px;
+      top: 126px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 210px;
+    }
+    #gs {
+      position: absolute;
+      top: 280px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #gill_spacing {
+      position: absolute;
+      top: 316px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 167px;
+    }
+    #gsi {
+      position: absolute;
+      left: 250px;
+      top: 280px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #gill_size {
+      position: absolute;
+      left: 250px;
+      top: 316px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 116px;
+    }
+    #gc {
+      position: absolute;
+      left: 440px;
+      top: 280px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #gill_color {
+      position: absolute;
+      left: 440px;
+      top: 316px;
+      font-size: 25px;
+      background-color: aqua;
+    }
+    #ss {
+      position: absolute;
+      left: 640px;
+      top: 280px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #stalk_shape {
+      position: absolute;
+      left: 640px;
+      top: 316px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 168px;
+    }
+    #sr {
+      position: absolute;
+      left: 880px;
+      top: 280px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #stalk_root {
+      position: absolute;
+      left: 880px;
+      top: 316px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 140px;
+    }
+    #ssar {
+      position: absolute;
+      left: 1100px;
+      top: 280px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #stalk_surface_above_ring {
+      position: absolute;
+      left: 1100px;
+      top: 316px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 335px;
+    }
+    #ssbr {
+      position: absolute;
+      top: 470px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #stalk_surface_below_ring {
+      position: absolute;
+      top: 506px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 330px;
+    }
+    #scar {
+      position: absolute;
+      top: 470px;
+      left: 420px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #stalk_color_above_ring {
+      position: absolute;
+      top: 506px;
+      left: 420px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 300px;
+    }
+    #scbr {
+      position: absolute;
+      top: 470px;
+      left: 800px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #stalk_color_below_ring {
+      position: absolute;
+      top: 506px;
+      left: 800px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 296px;
+    }
+    #vt {
+      position: absolute;
+      top: 470px;
+      left: 1180px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #veil_type {
+      position: absolute;
+      top: 506px;
+      left: 1180px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 132px;
+    }
+    #vc {
+      position: absolute;
+      top: 660px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #veil_color {
+      position: absolute;
+      top: 696px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 132px;
+    }
+    #rn {
+      position: absolute;
+      top: 660px;
+      left: 230px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #ring_number {
+      position: absolute;
+      top: 696px;
+      left: 230px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 183px;
+    }
+    #rt {
+      position: absolute;
+      top: 660px;
+      left: 500px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #ring_type {
+      position: absolute;
+      top: 696px;
+      left: 500px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 138px;
+    }
+    #spc {
+      position: absolute;
+      top: 660px;
+      left: 720px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #spore_print_color {
+      position: absolute;
+      top: 696px;
+      left: 720px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 232px;
+    }
+    #pop {
+      position: absolute;
+      top: 660px;
+      left: 1030px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #population {
+      position: absolute;
+      top: 696px;
+      left: 1030px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 153px;
+    }
+    #hab {
+      position: absolute;
+      top: 660px;
+      left: 1260px;
+      box-shadow: 8px 0 16px 0 cyan;
+    }
+    #habitat {
+      position: absolute;
+      top: 696px;
+      left: 1260px;
+      font-size: 25px;
+      background-color: aqua;
+      width: 106px;
+    }
+    #submit {
+      position: absolute;
+      top: 750px;
+      left: 620px;
+      box-shadow: 8px 0 16px 0 blue;
+      color: blue;
+      padding: 10px;
+      text-transform: uppercase;
+      background-color: red;
+      font-size: 30px;
+    }
+    #submit:hover {
+      background-color: blue;
+      color: red;
+      cursor: pointer;
+      box-shadow: 8px 0 16px 0 red;
+    }
+  </style>
+  <body>
+    <h1>Test Your Mushroom</h1>
+    <form action="{{url_for('predict_datapoint')}}" method="POST">
+      <div class="form-group">
+        <label for="cap_shape" id="cs">Cap Shape</label><br />
+        <select id="cap_shape" name="cap_shape">
+          <option value="b">bell</option>
+          <option value="c">conical</option>
+          <option value="x">convex</option>
+          <option value="f">flat</option>
+          <option value="k">knobbed</option>
+          <option value="s">sunken</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="cap-surface">Cap Surface:</label>
-    <select id="cap_surface" name="cap_surface">
-        <option value="f">fibrous</option>
-        <option value="g">grooves</option>
-        <option value="y">scaly</option>
-        <option value="s">smooth</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="cap-surface" id="csu">Cap Surface</label><br />
+        <select id="cap_surface" name="cap_surface">
+          <option value="f">fibrous</option>
+          <option value="g">grooves</option>
+          <option value="y">scaly</option>
+          <option value="s">smooth</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="cap-color">Cap color:</label>
-    <select id="cap_color" name="cap_color">
-        <option value="n">brown</option>
-        <option value="b">buff</option>
-        <option value="c">cinnamon</option>
-        <option value="g">gray</option>
-        <option value="r">green</option>
-        <option value="p">pink</option>
-        <option value="u">purple</option>
-        <option value="e">red</option>
-        <option value="w">white</option>
-        <option value="y">yellow</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="cap-color" id="cc">Cap color</label><br />
+        <select id="cap_color" name="cap_color">
+          <option value="n">brown</option>
+          <option value="b">buff</option>
+          <option value="c">cinnamon</option>
+          <option value="g">gray</option>
+          <option value="r">green</option>
+          <option value="p">pink</option>
+          <option value="u">purple</option>
+          <option value="e">red</option>
+          <option value="w">white</option>
+          <option value="y">yellow</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="bruises">Bruises:</label>
-    <select id="bruises" name="bruises">
-        <option value="t">yes</option>
-        <option value="f">no</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="bruises" id="br">Bruises</label><br />
+        <select id="bruises" name="bruises">
+          <option value="t">yes</option>
+          <option value="f">no</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="odor">Odor:</label>
-    <select id="odor" name="odor">
-        <option value="a">almond</option>
-        <option value="l">anise</option>
-        <option value="c">creosote</option>
-        <option value="y">fishy</option>
-        <option value="f">foul</option>
-        <option value="m">musty</option>
-        <option value="n">none</option>
-        <option value="p">pungent</option>
-        <option value="s">spicy</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="odor" id="od">Odor</label><br />
+        <select id="odor" name="odor">
+          <option value="a">almond</option>
+          <option value="l">anise</option>
+          <option value="c">creosote</option>
+          <option value="y">fishy</option>
+          <option value="f">foul</option>
+          <option value="m">musty</option>
+          <option value="n">none</option>
+          <option value="p">pungent</option>
+          <option value="s">spicy</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="gill-attachment">Gill attachment:</label>
-    <select id="gill_attachment" name="gill_attachment">
-        <option value="a">attached</option>
-        <option value="f">free</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="gill-attachment" id="ga">Gill attachment</label><br />
+        <select id="gill_attachment" name="gill_attachment">
+          <option value="a">attached</option>
+          <option value="f">free</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="gill-spacing">Gill spacing:</label>
-    <select id="gill_spacing" name="gill_spacing">
-        <option value="c">closed</option>
-        <option value="w">crowded</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="gill-spacing" id="gs">Gill spacing</label><br />
+        <select id="gill_spacing" name="gill_spacing">
+          <option value="c">closed</option>
+          <option value="w">crowded</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="gill-size">Gill size:</label>
-    <select id="gill_size" name="gill_size">
-        <option value="b">broad</option>
-        <option value="n">narrow</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="gill-size" id="gsi">Gill size</label><br />
+        <select id="gill_size" name="gill_size">
+          <option value="b">broad</option>
+          <option value="n">narrow</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="gill-color">Gill color:</label>
-    <select id="gill_color" name="gill_color">
-        <option value="k">black</option>
-        <option value="n">brown</option>
-        <option value="b">buff</option>
-        <option value="h">chocolate</option>
-        <option value="g">gray</option>
-        <option value="r">green</option>
-        <option value="o">orange</option>
-        <option value="p">pink</option>
-        <option value="u">purple</option>
-        <option value="e">red</option>
-        <option value="w">white</option>
-        <option value="y">yellow</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="gill-color" id="gc">Gill color</label><br />
+        <select id="gill_color" name="gill_color">
+          <option value="k">black</option>
+          <option value="n">brown</option>
+          <option value="b">buff</option>
+          <option value="h">chocolate</option>
+          <option value="g">gray</option>
+          <option value="r">green</option>
+          <option value="o">orange</option>
+          <option value="p">pink</option>
+          <option value="u">purple</option>
+          <option value="e">red</option>
+          <option value="w">white</option>
+          <option value="y">yellow</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="stalk-shape">Stalk shape:</label>
-    <select id="stalk_shape" name="stalk_shape">
-        <option value="e">enlarging</option>
-        <option value="t">tapering</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="stalk-shape" id="ss">Stalk shape</label><br />
+        <select id="stalk_shape" name="stalk_shape">
+          <option value="e">enlarging</option>
+          <option value="t">tapering</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="stalk-root">Stalk root:</label>
-    <select id="stalk_root" name="stalk_root">
-        <option value="b">bulbous</option>
-        <option value="c">club</option>
-        <option value="e">equal</option>
-        <option value="r">rooted</option>
-        <option value="?">missing</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="stalk-root" id="sr">Stalk root</label><br />
+        <select id="stalk_root" name="stalk_root">
+          <option value="b">bulbous</option>
+          <option value="c">club</option>
+          <option value="e">equal</option>
+          <option value="r">rooted</option>
+          <option value="?">missing</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="stalk-surface-above-ring">Stalk surface above ring:</label>
-    <select id="stalk_surface_above_ring" name="stalk_surface_above_ring">
-        <option value="f">fibrous</option>
-        <option value="y">scaly</option>
-        <option value="k">silky</option>
-        <option value="s">smooth</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="stalk-surface-above-ring" id="ssar"
+          >Stalk surface above ring</label
+        ><br />
+        <select id="stalk_surface_above_ring" name="stalk_surface_above_ring">
+          <option value="f">fibrous</option>
+          <option value="y">scaly</option>
+          <option value="k">silky</option>
+          <option value="s">smooth</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="stalk-surface-below-ring">Stalk surface below ring:</label>
-    <select id="stalk_surface_below_ring" name="stalk_surface_below_ring">
-        <option value="f">fibrous</option>
-        <option value="y">scaly</option>
-        <option value="k">silky</option>
-        <option value="s">smooth</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="stalk-surface-below-ring" id="ssbr"
+          >Stalk surface below ring</label
+        ><br />
+        <select id="stalk_surface_below_ring" name="stalk_surface_below_ring">
+          <option value="f">fibrous</option>
+          <option value="y">scaly</option>
+          <option value="k">silky</option>
+          <option value="s">smooth</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="stalk-color-above-ring">Stalk color above ring:</label>
-    <select id="stalk_color_above_ring" name="stalk_color_above_ring">
-        <option value="n">brown</option>
-        <option value="b">buff</option>
-        <option value="c">cinnamon</option>
-        <option value="g">gray</option>
-        <option value="o">orange</option>
-        <option value="p">pink</option>
-        <option value="e">red</option>
-        <option value="w">white</option>
-        <option value="y">yellow</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="stalk-color-above-ring" id="scar"
+          >Stalk color above ring</label
+        ><br />
+        <select id="stalk_color_above_ring" name="stalk_color_above_ring">
+          <option value="n">brown</option>
+          <option value="b">buff</option>
+          <option value="c">cinnamon</option>
+          <option value="g">gray</option>
+          <option value="o">orange</option>
+          <option value="p">pink</option>
+          <option value="e">red</option>
+          <option value="w">white</option>
+          <option value="y">yellow</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="stalk-color-below-ring">Stalk color below ring:</label>
-    <select id="stalk_color_below_ring" name="stalk_color_below_ring">
-        <option value="n">brown</option>
-        <option value="b">buff</option>
-        <option value="c">cinnamon</option>
-        <option value="g">gray</option>
-        <option value="o">orange</option>
-        <option value="p">pink</option>
-        <option value="e">red</option>
-        <option value="w">white</option>
-        <option value="y">yellow</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="stalk-color-below-ring" id="scbr"
+          >Stalk color below ring</label
+        ><br />
+        <select id="stalk_color_below_ring" name="stalk_color_below_ring">
+          <option value="n">brown</option>
+          <option value="b">buff</option>
+          <option value="c">cinnamon</option>
+          <option value="g">gray</option>
+          <option value="o">orange</option>
+          <option value="p">pink</option>
+          <option value="e">red</option>
+          <option value="w">white</option>
+          <option value="y">yellow</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="veil-type">Veil Type:</label>
-    <select id="veil_type" name="veil_type">
-        <option value="p">partial</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="veil-type" id="vt">Veil Type</label><br />
+        <select id="veil_type" name="veil_type">
+          <option value="p">partial</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="veil-color">Veil color:</label>
-    <select id="veil_color" name="veil_color">
-        <option value="n">brown</option>
-        <option value="o">orange</option>
-        <option value="w">white</option>
-        <option value="y">yellow</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="veil-color" id="vc">Veil color</label><br />
+        <select id="veil_color" name="veil_color">
+          <option value="n">brown</option>
+          <option value="o">orange</option>
+          <option value="w">white</option>
+          <option value="y">yellow</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="ring-number">Ring number:</label>
-    <select id="ring_number" name="ring_number">
-        <option value="n">none</option>
-        <option value="o">one</option>
-        <option value="t">two</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="ring-number" id="rn">Ring number</label><br />
+        <select id="ring_number" name="ring_number">
+          <option value="n">none</option>
+          <option value="o">one</option>
+          <option value="t">two</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="ring-type">Ring type:</label>
-    <select id="ring_type" name="ring_type">
-        <option value="e">evanescent</option>
-        <option value="f">flaring</option>
-        <option value="l">large</option>
-        <option value="n">none</option>
-        <option value="p">pendant</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="ring-type" id="rt">Ring type</label><br />
+        <select id="ring_type" name="ring_type">
+          <option value="e">evanescent</option>
+          <option value="f">flaring</option>
+          <option value="l">large</option>
+          <option value="n">none</option>
+          <option value="p">pendant</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="spore-print-color">Spore print color:</label>
-    <select id="spore_print_color" name="spore_print_color">
-        <option value="k">black</option>
-        <option value="n">brown</option>
-        <option value="b">buff</option>
-        <option value="h">chocolate</option>
-        <option value="r">green</option>
-        <option value="o">orange</option>
-        <option value="u">purple</option>
-        <option value="w">white</option>
-        <option value="y">yellow</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="spore-print-color" id="spc">Spore print color</label><br />
+        <select id="spore_print_color" name="spore_print_color">
+          <option value="k">black</option>
+          <option value="n">brown</option>
+          <option value="b">buff</option>
+          <option value="h">chocolate</option>
+          <option value="r">green</option>
+          <option value="o">orange</option>
+          <option value="u">purple</option>
+          <option value="w">white</option>
+          <option value="y">yellow</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="population">Population:</label>
-    <select id="population" name="population">
-        <option value="a">abundant</option>
-        <option value="c">clustered</option>
-        <option value="n">numerous</option>
-        <option value="s">scatterd</option>
-        <option value="v">several</option>
-        <option value="y">solitary</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="population" id="pop">Population</label><br />
+        <select id="population" name="population">
+          <option value="a">abundant</option>
+          <option value="c">clustered</option>
+          <option value="n">numerous</option>
+          <option value="s">scatterd</option>
+          <option value="v">several</option>
+          <option value="y">solitary</option>
+        </select>
+      </div>
 
-<div class="form-group">
-    <label for="habitat">Habitat:</label>
-    <select id="habitat" name="habitat">
-        <option value="g">grasses</option>
-        <option value="l">leaves</option>
-        <option value="m">meadows</option>
-        <option value="p">paths</option>
-        <option value="u">urban</option>
-        <option value="w">waste</option>
-        <option value="d">woods</option>
-    </select>
-</div>
+      <div class="form-group">
+        <label for="habitat" id="hab">Habitat</label><br />
+        <select id="habitat" name="habitat">
+          <option value="g">grasses</option>
+          <option value="l">leaves</option>
+          <option value="m">meadows</option>
+          <option value="p">paths</option>
+          <option value="u">urban</option>
+          <option value="w">waste</option>
+          <option value="d">woods</option>
+        </select>
+      </div>
 
-<div style="clear:both;"></div>
-    <input type="submit" value="Submit">
-</form>
-</body>
+      <div style="clear: both"></div>
+      <input type="submit" value="Submit" / id="submit">
+    </form>
+  </body>
 </html>

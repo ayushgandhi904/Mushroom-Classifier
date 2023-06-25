@@ -1,39 +1,45 @@
-import os, sys
-from src.exception import CustomException
-from src.logger import logging
-from src.utils import load_object
-import numpy as np
-import pandas as pd
+import os, sys #for system
+from src.exception import CustomException #for the exception if occurs
+from src.logger import logging #to log the file
+from src.utils import load_object #to load pickle file of preprocessor & model
+import pandas as pd #handling the dataframe
 
+#Creating class for prediction pipeline
 class PredictPipeline:
     
-    def __init__(self):
+    def __init__(self): #initializing
         pass    
+    
     def predict(self, features):
-        try:
-            
+        try:   
             logging.info("Starting for prediction path")
             
-            preprocessor_path = os.path.join("artifacts", "preprocessor.pkl")
-            model_path = os.path.join("artifacts", "model.pkl")
+            preprocessor_path = os.path.join("artifacts", "preprocessor.pkl") #joining the preprocessor path
+            model_path = os.path.join("artifacts", "model.pkl") #joining the model path
+            logging.info("Preprocessor & Model path joined")
             
-            preprocessor = load_object(preprocessor_path)
+            #loading preprocessor object
+            preprocessor = load_object(preprocessor_path) 
             model = load_object(model_path)
+            logging.info("Preprocessor object loaded")
             
-            data_scaled = preprocessor.transform(features)
+            #to transform the features through preprocessor
+            data_scaled = preprocessor.transform(features) 
+            logging.info("Features transform through Preprocessor")
             
+            #predicting the output through model 
             pred = model.predict(data_scaled)
-            logging.info("Model able to predict")
+            logging.info("Output predicted through model")
             
             return pred
         
+        #store the exception if occours  
         except Exception as e:
             logging.info("Exception in prediction step")
             raise CustomException(e, sys)
 
-
-class CustomData:
-    
+#Defining the custom class to input data through form
+class CustomData: 
     def __init__(self,
                  cap_shape:str,
                  cap_surface:str,
@@ -79,11 +85,11 @@ class CustomData:
         self.ring_type = ring_type
         self.spore_print_color = spore_print_color
         self.population = population
-        self.habitat = habitat
-        
+        self.habitat = habitat #initializing every feature with self     
+        logging.info("All features self initialized")   
     
+    #defining function to store obtain data in the form of the dataframe
     def get_data_as_dataframe(self):
-        
         try:
             custom_data_input_dict = {
                 "cap-shape" : [self.cap_shape],
@@ -107,11 +113,15 @@ class CustomData:
                 "ring-type" : [self.ring_type],
                 "spore-print-color" : [self.spore_print_color],
                 "population" : [self.population],
-                "habitat" : [self.habitat]      
-            }
+                "habitat" : [self.habitat]  
+            }     #storing obtain data to it relative coloumn
+            
+            #to input data into dataframe
             df = pd.DataFrame(custom_data_input_dict)
             logging.info("Dataframe is gathered as dataframe")
             return df
+        
+        #store the exception if occours          
         except CustomException as e:
             logging.info("Exception occuredd in prediction pipeline")
             raise CustomException(e, sys)
