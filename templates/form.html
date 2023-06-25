@@ -24,26 +24,26 @@
       position: absolute;
       top: 126px;
       font-size: 25px;
-      background-color: rgb(0, 255, 221);
+      background-color: cyan;
       width: 160px;
     }
     option[value="b"] {
-      background-color: rgb(30, 120, 210);
+      background-color: rgb(30, 201, 210);
     }
     option[value="c"] {
-      background-color: rgb(30, 168, 210);
+      background-color: rgb(30, 201, 210);
     }
     option[value="x"] {
       background-color: rgb(30, 201, 210);
     }
     option[value="f"] {
-      background-color: rgb(30, 210, 201);
+      background-color: rgb(30, 201, 210);
     }
     option[value="k"] {
-      background-color: rgb(52, 248, 255);
+      background-color: rgb(30, 201, 210);
     }
     option[value="s"] {
-      background-color: rgb(30, 210, 150);
+      background-color: rgb(30, 201, 210);
     }
     #csu {
       position: absolute;
@@ -60,16 +60,19 @@
       width: 178px;
     }
     option[value="b"] {
-      background-color: rgb(30, 120, 210);
+      background-color: rgb(30, 201, 210);
     }
     option[value="g"] {
-      background-color: rgb(30, 168, 210);
+      background-color: rgb(30, 201, 210);
     }
     option[value="y"] {
       background-color: rgb(30, 201, 210);
     }
     option[value="b"] {
-      background-color: rgb(52, 248, 255);
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="p"] {
+      background-color: rgb(30, 201, 210);
     }
     #cc {
       position: absolute;
@@ -84,6 +87,37 @@
       font-size: 25px;
       background-color: aqua;
       width: 140px;
+    }
+    option[value="n"] {
+      background-color: rgb(30, 201, 210);
+    }
+
+    option[value="b"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="c"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="g"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="r"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="p"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="u"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="e"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="w"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="y"] {
+      background-color: rgb(30, 201, 210);
     }
     #br {
       position: absolute;
@@ -113,7 +147,12 @@
       background-color: aqua;
       width: 80px;
     }
-
+    option[value="a"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="m"] {
+      background-color: rgb(30, 201, 210);
+    }
     #ga {
       position: absolute;
       top: 90px;
@@ -167,6 +206,15 @@
       font-size: 25px;
       background-color: aqua;
     }
+    option[value="h"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="l"] {
+      background-color: rgb(30, 201, 210);
+    }
+    option[value="o"] {
+      background-color: rgb(30, 201, 210);
+    }
     #ss {
       position: absolute;
       left: 640px;
@@ -181,6 +229,9 @@
       background-color: aqua;
       width: 168px;
     }
+    option[value="t"] {
+      background-color: rgb(30, 201, 210);
+    }
     #sr {
       position: absolute;
       left: 880px;
@@ -194,6 +245,9 @@
       font-size: 25px;
       background-color: aqua;
       width: 140px;
+    }
+    option[value="?"] {
+      background-color: rgb(30, 201, 210);
     }
     #ssar {
       position: absolute;
@@ -331,6 +385,9 @@
       background-color: aqua;
       width: 153px;
     }
+    option[value="v"] {
+      background-color: rgb(30, 201, 210);
+    }
     #hab {
       position: absolute;
       top: 660px;
@@ -344,6 +401,9 @@
       font-size: 25px;
       background-color: aqua;
       width: 106px;
+    }
+    option[value="d"] {
+      background-color: rgb(30, 201, 210);
     }
     #submit {
       position: absolute;
@@ -364,10 +424,10 @@
     }
   </style>
   <body>
-    <h1>Test Your Mushroom</h1>
+    <h1>Choose your Features</h1>
     <form action="{{url_for('predict_datapoint')}}" method="POST">
       <div class="form-group">
-        <label for="cap_shape" id="cs">Cap Shape</label><br />
+        <label for="cap_shape" id="cs">Cap Shape:</label><br />
         <select id="cap_shape" name="cap_shape">
           <option value="b">bell</option>
           <option value="c">conical</option>
@@ -379,7 +439,7 @@
       </div>
 
       <div class="form-group">
-        <label for="cap-surface" id="csu">Cap Surface</label><br />
+        <label for="cap-surface" id="csu">Cap Surface:</label><br />
         <select id="cap_surface" name="cap_surface">
           <option value="f">fibrous</option>
           <option value="g">grooves</option>
@@ -389,12 +449,12 @@
       </div>
 
       <div class="form-group">
-        <label for="cap-color" id="cc">Cap color</label><br />
+        <label for="cap-color" id="cc">Cap color:</label><br />
         <select id="cap_color" name="cap_color">
           <option value="n">brown</option>
           <option value="b">buff</option>
           <option value="c">cinnamon</option>
-          <option value="g">gray</option>
+          <option value="g">grey</option>
           <option value="r">green</option>
           <option value="p">pink</option>
           <option value="u">purple</option>
@@ -405,7 +465,7 @@
       </div>
 
       <div class="form-group">
-        <label for="bruises" id="br">Bruises</label><br />
+        <label for="bruises" id="br">Bruises:</label><br />
         <select id="bruises" name="bruises">
           <option value="t">yes</option>
           <option value="f">no</option>
@@ -413,7 +473,7 @@
       </div>
 
       <div class="form-group">
-        <label for="odor" id="od">Odor</label><br />
+        <label for="odor" id="od">Odor:</label><br />
         <select id="odor" name="odor">
           <option value="a">almond</option>
           <option value="l">anise</option>
@@ -428,7 +488,7 @@
       </div>
 
       <div class="form-group">
-        <label for="gill-attachment" id="ga">Gill attachment</label><br />
+        <label for="gill-attachment" id="ga">Gill attachment:</label><br />
         <select id="gill_attachment" name="gill_attachment">
           <option value="a">attached</option>
           <option value="f">free</option>
@@ -436,7 +496,7 @@
       </div>
 
       <div class="form-group">
-        <label for="gill-spacing" id="gs">Gill spacing</label><br />
+        <label for="gill-spacing" id="gs">Gill spacing:</label><br />
         <select id="gill_spacing" name="gill_spacing">
           <option value="c">closed</option>
           <option value="w">crowded</option>
@@ -444,7 +504,7 @@
       </div>
 
       <div class="form-group">
-        <label for="gill-size" id="gsi">Gill size</label><br />
+        <label for="gill-size" id="gsi">Gill size:</label><br />
         <select id="gill_size" name="gill_size">
           <option value="b">broad</option>
           <option value="n">narrow</option>
@@ -452,13 +512,13 @@
       </div>
 
       <div class="form-group">
-        <label for="gill-color" id="gc">Gill color</label><br />
+        <label for="gill-color" id="gc">Gill color:</label><br />
         <select id="gill_color" name="gill_color">
           <option value="k">black</option>
           <option value="n">brown</option>
           <option value="b">buff</option>
           <option value="h">chocolate</option>
-          <option value="g">gray</option>
+          <option value="g">grey</option>
           <option value="r">green</option>
           <option value="o">orange</option>
           <option value="p">pink</option>
@@ -470,7 +530,7 @@
       </div>
 
       <div class="form-group">
-        <label for="stalk-shape" id="ss">Stalk shape</label><br />
+        <label for="stalk-shape" id="ss">Stalk shape:</label><br />
         <select id="stalk_shape" name="stalk_shape">
           <option value="e">enlarging</option>
           <option value="t">tapering</option>
@@ -478,7 +538,7 @@
       </div>
 
       <div class="form-group">
-        <label for="stalk-root" id="sr">Stalk root</label><br />
+        <label for="stalk-root" id="sr">Stalk root:</label><br />
         <select id="stalk_root" name="stalk_root">
           <option value="b">bulbous</option>
           <option value="c">club</option>
@@ -490,7 +550,7 @@
 
       <div class="form-group">
         <label for="stalk-surface-above-ring" id="ssar"
-          >Stalk surface above ring</label
+          >Stalk surface above ring:</label
         ><br />
         <select id="stalk_surface_above_ring" name="stalk_surface_above_ring">
           <option value="f">fibrous</option>
@@ -502,7 +562,7 @@
 
       <div class="form-group">
         <label for="stalk-surface-below-ring" id="ssbr"
-          >Stalk surface below ring</label
+          >Stalk surface below ring:</label
         ><br />
         <select id="stalk_surface_below_ring" name="stalk_surface_below_ring">
           <option value="f">fibrous</option>
@@ -514,13 +574,13 @@
 
       <div class="form-group">
         <label for="stalk-color-above-ring" id="scar"
-          >Stalk color above ring</label
+          >Stalk color above ring:</label
         ><br />
         <select id="stalk_color_above_ring" name="stalk_color_above_ring">
           <option value="n">brown</option>
           <option value="b">buff</option>
           <option value="c">cinnamon</option>
-          <option value="g">gray</option>
+          <option value="g">grey</option>
           <option value="o">orange</option>
           <option value="p">pink</option>
           <option value="e">red</option>
@@ -531,13 +591,13 @@
 
       <div class="form-group">
         <label for="stalk-color-below-ring" id="scbr"
-          >Stalk color below ring</label
+          >Stalk color below ring:</label
         ><br />
         <select id="stalk_color_below_ring" name="stalk_color_below_ring">
           <option value="n">brown</option>
           <option value="b">buff</option>
           <option value="c">cinnamon</option>
-          <option value="g">gray</option>
+          <option value="g">grey</option>
           <option value="o">orange</option>
           <option value="p">pink</option>
           <option value="e">red</option>
@@ -547,14 +607,14 @@
       </div>
 
       <div class="form-group">
-        <label for="veil-type" id="vt">Veil Type</label><br />
+        <label for="veil-type" id="vt">Veil Type:</label><br />
         <select id="veil_type" name="veil_type">
           <option value="p">partial</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="veil-color" id="vc">Veil color</label><br />
+        <label for="veil-color" id="vc">Veil color:</label><br />
         <select id="veil_color" name="veil_color">
           <option value="n">brown</option>
           <option value="o">orange</option>
@@ -564,7 +624,7 @@
       </div>
 
       <div class="form-group">
-        <label for="ring-number" id="rn">Ring number</label><br />
+        <label for="ring-number" id="rn">Ring number:</label><br />
         <select id="ring_number" name="ring_number">
           <option value="n">none</option>
           <option value="o">one</option>
@@ -573,7 +633,7 @@
       </div>
 
       <div class="form-group">
-        <label for="ring-type" id="rt">Ring type</label><br />
+        <label for="ring-type" id="rt">Ring type:</label><br />
         <select id="ring_type" name="ring_type">
           <option value="e">evanescent</option>
           <option value="f">flaring</option>
@@ -584,7 +644,7 @@
       </div>
 
       <div class="form-group">
-        <label for="spore-print-color" id="spc">Spore print color</label><br />
+        <label for="spore-print-color" id="spc">Spore print color:</label><br />
         <select id="spore_print_color" name="spore_print_color">
           <option value="k">black</option>
           <option value="n">brown</option>
@@ -599,7 +659,7 @@
       </div>
 
       <div class="form-group">
-        <label for="population" id="pop">Population</label><br />
+        <label for="population" id="pop">Population:</label><br />
         <select id="population" name="population">
           <option value="a">abundant</option>
           <option value="c">clustered</option>
@@ -611,7 +671,7 @@
       </div>
 
       <div class="form-group">
-        <label for="habitat" id="hab">Habitat</label><br />
+        <label for="habitat" id="hab">Habitat:</label><br />
         <select id="habitat" name="habitat">
           <option value="g">grasses</option>
           <option value="l">leaves</option>
