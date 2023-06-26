@@ -35,11 +35,6 @@ To deploy this project run
 python application.py
 ```
 
-## Authors
-
-- [@ayushgandhi904](https://www.github.com/ayushgandhi904)
-
-
 ## Contributing
 
 Contributions are always welcome!
@@ -53,6 +48,8 @@ Contributions are always welcome!
 # Hi, I'm Ayush Gandhi! 👋
 
 ![Signature](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/e5ca1b3f-2122-4dfa-b10a-6e4c0408e0a3)
+
+- [@ayushgandhi904](https://www.github.com/ayushgandhi904)
 
 
 ## 🚀 About Me
