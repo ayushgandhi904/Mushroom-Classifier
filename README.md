@@ -1,15 +1,14 @@
 # Mushroom Classifier
 
-Returns the edible or poisonous Mushroom type after inputing different Mushroom features. 
+Returns the edible or poisonous Mushroom type after inputting different Mushroom features. 
 
 ## Demo
 
-Insert gif or link to demo
+Insert gif or link to the demo
 
 
 ## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Screenshot 2023-06-26 172508](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/fb92421e-aa2e-4d1d-bdf1-e5beb1b0fbae)
 
 
 ## Installation
@@ -49,6 +48,8 @@ Contributions are always welcome!
 
 
 # Hi, I'm Ayush Gandhi! 👋
+
+![Signature](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/e5ca1b3f-2122-4dfa-b10a-6e4c0408e0a3)
 
 
 ## 🚀 About Me
