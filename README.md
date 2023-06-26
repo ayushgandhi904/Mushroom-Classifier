@@ -2,11 +2,6 @@
 
 Returns the edible or poisonous Mushroom type after inputting different Mushroom features. 
 
-## Demo
-
-Insert gif or link to the demo
-
-
 ## Screenshots
 ![Screenshot 2023-06-26 174312](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/9d20ca2e-eec0-4308-916d-34db6934d393)
 ![Screenshot 2023-06-26 174355](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/f9d40b1d-56aa-46c8-a1f1-d70a00040713)
@@ -50,8 +45,6 @@ Contributions are always welcome!
 ![Signature](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/e5ca1b3f-2122-4dfa-b10a-6e4c0408e0a3)
 
 - [@ayushgandhi904](https://www.github.com/ayushgandhi904)
-
-
 ## 🚀 About Me
 I'am a Data Scientist cum Petroleum Engineer
 
