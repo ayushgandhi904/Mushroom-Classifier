@@ -42,8 +42,11 @@ Contributions are always welcome!
 
 # Hi, I'm Ayush Gandhi! 👋
 
+<<<<<<< HEAD
 ![Signature](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/e5ca1b3f-2122-4dfa-b10a-6e4c0408e0a3)
 
+=======
+>>>>>>> 72f354a246fe109f62277aa07d4e6d8ec8bb232a
 - [@ayushgandhi904](https://www.github.com/ayushgandhi904)
 ## 🚀 About Me
 I'am a Data Scientist cum Petroleum Engineer
