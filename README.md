@@ -1,4 +1,4 @@
-![image](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/58a53b39-1357-4dac-b11c-6f3ac6429fea)# Mushroom Classifier
+# Mushroom Classifier
 
 Returns the edible or poisonous Mushroom type after inputting different Mushroom features. 
 
