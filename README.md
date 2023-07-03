@@ -2,6 +2,13 @@
 
 Returns the edible or poisonous Mushroom type after inputting different Mushroom features. 
 
+# AWS Deployment Link
+
+AWS deployment link: http://mushroomclassifier-env.eba-vs8sjwis.ap-south-1.elasticbeanstalk.com/
+
+![Alt text](image.png)
+![Alt text](image-1.png)
+
 ## Screenshots
 ![Screenshot 2023-06-26 174312](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/9d20ca2e-eec0-4308-916d-34db6934d393)
 ![Screenshot 2023-06-26 174355](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/f9d40b1d-56aa-46c8-a1f1-d70a00040713)
