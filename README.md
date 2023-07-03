@@ -1,4 +1,4 @@
-# Mushroom Classifier
+![image](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/58a53b39-1357-4dac-b11c-6f3ac6429fea)# Mushroom Classifier
 
 Returns the edible or poisonous Mushroom type after inputting different Mushroom features. 
 
@@ -6,8 +6,12 @@ Returns the edible or poisonous Mushroom type after inputting different Mushroom
 
 AWS deployment link: http://mushroomclassifier-env.eba-vs8sjwis.ap-south-1.elasticbeanstalk.com/
 
-![Alt text](image.png)
-![Alt text](image-1.png)
+![Screenshot 2023-07-03 170808](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/985f5b3f-5093-477c-8b73-ad6e73bfcefd)
+
+![Screenshot 2023-07-03 165345](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/3dc55011-a1b9-4a82-9133-7f075578936b)
+
+![Screenshot 2023-07-03 165407](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/291b23df-48be-4b39-a330-c97bf853c050)
+
 
 ## Screenshots
 ![Screenshot 2023-06-26 174312](https://github.com/ayushgandhi904/Mushroom-Classifier/assets/96850890/9d20ca2e-eec0-4308-916d-34db6934d393)
